@@ -20,12 +20,8 @@ public class Car {
     private String tyres;
     private String engine;
     private Random rand = new Random();
-    Tier speedTier;
+    int speedTier;
 
-
-    public enum Tier {
-        LOW, MED, HIGH;
-    }
 
     public Car(int speed, String wheels, String tyres, String engine) {
         this.speed = speed;
@@ -70,82 +66,80 @@ public class Car {
         String aTire = getTyres();
         String aEngine = getEngine();
         String aWheel = getWheels();
-        Tier tireTier;
-        Tier engineTier;
-        Tier wheelTier;
+        int tireTier = 0, engineTier = 0, wheelTier = 0;
 
         switch (aTire) {
             case "Michelin":
             case "Goodyear":
-                tireTier = Tier.HIGH;
+                tireTier = 2;
                 break;
 
             case "BFGoodrich":
-                tireTier = Tier.LOW;
+                tireTier = 0;
                 break;
 
             case "Continental":
             case "Yokohama":
             default:
-                tireTier = Tier.MED;
+                tireTier = 1;
                 break;
         }
 
         switch (aEngine) {
             case "Honda":
             case "Ford":
-                engineTier = Tier.LOW;
+                engineTier = 0;
                 break;
 
             case "BMW":
-                engineTier = Tier.HIGH;
+                engineTier = 2;
                 break;
 
             case "Toyota":
             case "Nissan":
             default:
-                engineTier = Tier.MED;
+                engineTier = 1;
                 break;
         }
 
         switch (aWheel) {
             case "Enkei":
             case "BBS":
-                wheelTier = Tier.LOW;
+                wheelTier = 0;
                 break;
 
             case "Vossen":
-                wheelTier = Tier.HIGH;
+                wheelTier = 2;
                 break;
 
             case "HRE Performance":
             case "Konig":
             default:
-                wheelTier = Tier.MED;
+                wheelTier = 1;
                 break;
         }
 
-        if (tireTier == Tier.LOW && (engineTier == Tier.LOW || wheelTier == Tier.LOW)) {
-            speedTier = Tier.LOW;
+        if ((tireTier + engineTier + wheelTier) <= 1) {
+            speedTier = 0;
 
-        } else if (tireTier == Tier.MED && (engineTier == Tier.MED || wheelTier == Tier.MED)) {
-            speedTier = Tier.MED;
+        } else if ((tireTier + engineTier + wheelTier) <= 3) {
+            speedTier = 1;
 
-        } else if (tireTier == Tier.HIGH && (engineTier == Tier.HIGH || wheelTier == Tier.HIGH)) {
-            speedTier = Tier.HIGH;
+        } else if ((tireTier + engineTier + wheelTier) <= 5) {
+            speedTier = 2;
         }
 
         switch (speedTier) {
-            case LOW:
+            case 0:
                 speed = rand.nextInt(3);
                 setSpeed(speed);
                 break;
 
-            case MED:
+            case 1:
                 speed = rand.nextInt(7);
                 setSpeed(speed);
                 break;
-            case HIGH:
+            case 2:
                 speed = rand.nextInt(9);
                 setSpeed(speed);
                 break;
