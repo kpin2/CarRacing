@@ -12,6 +12,7 @@ public class RacingVenue {
 
     ArrayList<Car> carList;
     Car winner;
+    Car car1;
 
     public RacingVenue() {
         carList = new ArrayList<Car>();
@@ -19,7 +20,7 @@ public class RacingVenue {
     }
 
     public void addCar(Car c) {
-        carList.add(c);
+        carList.add(car1);
     }
 
     public ArrayList<Car> getCars() {

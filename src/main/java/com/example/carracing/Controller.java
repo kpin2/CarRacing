@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -27,7 +28,8 @@ public class Controller{
     private Circle car_1, car_2, car_3, car_4;
     
     Path path;
-    Car car;
+    Car car1, car2, car3, car4;
+
 
     private Stage stage;
     private Scene scene;
@@ -55,7 +57,7 @@ public class Controller{
         stage.show();
         }
     public void moveCar1(){
-        car = new Car();
+        car1 = new Car();
         path = new Path();
         path.getElements().add(new MoveTo(0, 0));
         path.getElements().add(new LineTo(550, 0));
@@ -64,12 +66,12 @@ public class Controller{
         path.getElements().add(new LineTo(0, 0));
         PathTransition transition = new PathTransition();
         transition.setNode(car_1);
-        transition.setDuration(Duration.seconds(10 - this.car.getSpeed()));
+        transition.setDuration(Duration.seconds(10 - car1.getSpeed()));
         transition.setPath(path);
         transition.play();
     }
     public void moveCar2(){
-        car = new Car();
+        car2 = new Car();
         path = new Path();
         path.getElements().add(new MoveTo(0, 0));
         path.getElements().add(new LineTo(0, -265));
@@ -78,12 +80,12 @@ public class Controller{
         path.getElements().add(new LineTo(0, 0));
         PathTransition transition = new PathTransition();
         transition.setNode(car_2);
-        transition.setDuration(Duration.seconds(10 - this.car.getSpeed()));
+        transition.setDuration(Duration.seconds(10 - car2.getSpeed()));
         transition.setPath(path);
         transition.play();
     }
     public void moveCar3(){
-        car = new Car();
+        car3 = new Car();
         path = new Path();
         path.getElements().add(new MoveTo(0, 0));
         path.getElements().add(new LineTo(-550, 0));
@@ -92,12 +94,12 @@ public class Controller{
         path.getElements().add(new LineTo(0, 0));
         PathTransition transition = new PathTransition();
         transition.setNode(car_3);
-        transition.setDuration(Duration.seconds(10 - this.car.getSpeed()));
+        transition.setDuration(Duration.seconds(10 - car3.getSpeed()));
         transition.setPath(path);
         transition.play();
     }
     public void moveCar4(){
-        car = new Car();
+        car4 = new Car();
         path = new Path();
         path.getElements().add(new MoveTo(0, 0));
         path.getElements().add(new LineTo(0, 265));
@@ -106,7 +108,7 @@ public class Controller{
         path.getElements().add(new LineTo(0, 0));
         PathTransition transition = new PathTransition();
         transition.setNode(car_4);
-        transition.setDuration(Duration.seconds(10 - this.car.getSpeed()));
+        transition.setDuration(Duration.seconds(10 - car4.getSpeed()));
         transition.setPath(path);
         transition.play();
     }
