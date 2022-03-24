@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.ArrayList;
 
 /**
- * Class containing all the necessary information for the cars that will be used in the race
+ * Class to create the Cars to be raced with randomized tires, wheels, engine, and speed
  *
  * @author Yuliia Synytska
  * @modified by: Kevin Pinto
@@ -14,27 +14,33 @@ import java.util.ArrayList;
 public class Car {
 
 
-    //    Declaring all the necessary attributes
+    //Declaring necessary car attributes
     private int speed;
     private String wheels;
     private String tyres;
     private String engine;
-    private Random rand = new Random();
+
+    //Creating random number generator
+    private final Random rand = new Random();
     int speedTier;
 
-
+    /**
+     * Default constructors for Car
+     */
     public Car(int speed, String wheels, String tyres, String engine) {
-
         this.speed = speed;
         this.wheels = wheels;
         this.tyres = tyres;
         this.engine = engine;
     }
 
-    public Car(){
+    public Car() {
         randomCar();
     }
 
+    /**
+     * Method which creates an ArrayList of all possible wheels, tyres, and engines. Then uses random number
+     * generator to assign one of each. */
     public void randomCar() {
 
         ArrayList<String> possibleWheels = new ArrayList<String>();
@@ -67,6 +73,11 @@ public class Car {
         setEngine(engine);
 
 
+
+        /** A number value in the form of a 'tier' is assigned to each of the tyres, engine, and wheels based on
+         * the randomly assigned attributes. The values are totaled up, and 3 thresholds then makeup a 'speedTier' of
+         * 0, 1, or 2, which ultimately decides the cars 'top speed'
+         *  */
         String aTire = getTyres();
         String aEngine = getEngine();
         String aWheel = getWheels();
