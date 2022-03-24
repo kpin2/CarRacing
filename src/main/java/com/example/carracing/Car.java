@@ -24,14 +24,18 @@ public class Car {
 
 
     public Car(int speed, String wheels, String tyres, String engine) {
+
         this.speed = speed;
         this.wheels = wheels;
         this.tyres = tyres;
         this.engine = engine;
     }
 
+    public Car(){
+        randomCar();
+    }
 
-    public Car randomCar() {
+    public void randomCar() {
 
         ArrayList<String> possibleWheels = new ArrayList<String>();
         possibleWheels.add("Enkei");
@@ -148,8 +152,6 @@ public class Car {
                 setSpeed(speed);
                 break;
         }
-
-        return randomCar();
     }
 
 
